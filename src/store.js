@@ -63,7 +63,7 @@ export const selectRequest =
     const raw = state[REQUEST_MIDDLEWARE][KEY(meta)] ?? null;
     if (!raw) return null;
     if (!raw.data) return null;
-    console.log(raw);
+
     return {
       ...raw,
       data: select(raw.data),

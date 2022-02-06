@@ -1,5 +1,5 @@
 import React from "react";
-import { initialValues, SELECT, URLS, CLEAR } from "./constants";
+import { initialValues, SELECT, URLS, CLEAR } from "../constants";
 import Form from "./Form";
 
 const useSelectValues = (key, parentId = true) => {

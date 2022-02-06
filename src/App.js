@@ -1,6 +1,6 @@
 import React from "react";
 import SWR from "./SWR";
-import Vanilia from "./Vanilia";
+import Vanilia from "./components/Vanilia";
 
 const App = () => {
   return (

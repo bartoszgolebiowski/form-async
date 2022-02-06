@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import SWR from "./SWR";
-import Vanilia from "./Vanilia";
+import Vanilia from "./components/Vanilia";
 
 describe("form-async", () => {
   describe("Vanilia", () => {
@@ -161,5 +161,4 @@ describe("form-async", () => {
       );
     });
   });
-  
 });

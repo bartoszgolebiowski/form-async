@@ -1,5 +1,5 @@
 import React from "react";
-import SWR from "./SWR";
+import SWR from "./components/SWR";
 import Vanilia from "./components/Vanilia";
 
 const App = () => {

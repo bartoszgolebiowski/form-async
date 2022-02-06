@@ -1,6 +1,6 @@
 import React from "react";
 import useSWR from "swr";
-import { initialValues, SELECT, URLS, CLEAR } from "./constants";
+import { initialValues, SELECT, URLS, CLEAR } from "../constants";
 import Form from "./Form";
 
 const useSelectValuesSWR = (key, parentId) => {

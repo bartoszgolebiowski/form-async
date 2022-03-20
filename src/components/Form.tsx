@@ -1,10 +1,20 @@
 import React from "react";
+import { FormValues, SelectValues } from "../constants";
 import Options from "./Options";
 import Select from "./Select";
 
-const Form = (props) => {
+type Props = {
+  user: SelectValues;
+  post: SelectValues;
+  comment: SelectValues;
+  values: FormValues;
+  handleChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+};
+
+const Form: React.FC<Props> = (props) => {
   const { user, post, comment, values, handleChange, handleSubmit } = props;
-  
+
   return (
     <>
       <form onSubmit={handleSubmit} aria-label="Report">
@@ -12,7 +22,7 @@ const Form = (props) => {
         <Select
           name="user"
           label="User"
-          value={values.user}
+          value={values.user ?? undefined}
           onChange={handleChange}
           disabled={!user.values}
           isLoading={user.isLoading}
@@ -23,7 +33,7 @@ const Form = (props) => {
         <Select
           name="post"
           label="Post"
-          value={values.post}
+          value={values.post ?? undefined}
           onChange={handleChange}
           disabled={!post.values}
           isLoading={post.isLoading}
@@ -34,7 +44,7 @@ const Form = (props) => {
         <Select
           name="comment"
           label="Comment"
-          value={values.comment}
+          value={values.comment ?? undefined}
           onChange={handleChange}
           disabled={!comment.values}
           isLoading={comment.isLoading}

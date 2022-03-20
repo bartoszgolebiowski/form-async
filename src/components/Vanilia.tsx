@@ -1,11 +1,22 @@
 import React from "react";
-import { initialValues, SELECT, URLS, CLEAR } from "../constants";
+import {
+  initialValues,
+  SELECT,
+  URLS,
+  CLEAR,
+  OptionValue,
+  RawResponse,
+  SelectValues,
+} from "../constants";
 import Form from "./Form";
 
-const useSelectValues = (key, parentId = true) => {
+const useSelectValues = (
+  key: "post" | "comment" | "user",
+  parentId: number | null
+): SelectValues => {
   const [isLoading, setLoading] = React.useState(false);
   const [isError, setError] = React.useState(false);
-  const [values, setValues] = React.useState(null);
+  const [values, setValues] = React.useState<OptionValue[] | null>(null);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -14,7 +25,18 @@ const useSelectValues = (key, parentId = true) => {
         setLoading(true);
         const response = await fetch(URLS[key](parentId));
         const data = await response.json();
-        setValues(SELECT[key](data));
+        if (key === "user") {
+          const castedResponse: RawResponse<typeof key> = data;
+          setValues(SELECT[key](castedResponse));
+        }
+        if (key === "post") {
+          const castedResponse: RawResponse<typeof key> = data;
+          setValues(SELECT[key](castedResponse));
+        }
+        if (key === "comment") {
+          const castedResponse: RawResponse<typeof key> = data;
+          setValues(SELECT[key](castedResponse));
+        }
       } catch (error) {
         setError(true);
       }
@@ -33,20 +55,22 @@ const useSelectValues = (key, parentId = true) => {
 const Vanilia = () => {
   const [values, setValues] = React.useState(initialValues);
 
-  const user = useSelectValues("user");
+  const user = useSelectValues("user", -1);
   const post = useSelectValues("post", values.user);
   const comment = useSelectValues("comment", values.post);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert(JSON.stringify(values));
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const name = e.target.name as "user" | "post" | "comment";
+
     setValues({
       ...values,
-      [e.target.name]: e.target.value,
-      ...CLEAR[e.target.name],
+      [name]: e.target.value,
+      ...CLEAR[name],
     });
   };
 
@@ -57,7 +81,7 @@ const Vanilia = () => {
     comment,
     handleChange,
     handleSubmit,
-  };
+  } as const;
 
   return <Form {...props} />;
 };

@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import SWR from "./SWR";
+import SWR from "./components/SWR";
 import Vanilia from "./components/Vanilia";
 
 describe("form-async", () => {

@@ -9,9 +9,15 @@ const error = {
   opacity: 0.5,
 };
 
-const Select = (props) => {
+type Props = React.ComponentProps<"select"> & {
+  label: string;
+  isLoading: boolean;
+  isError: boolean;
+};
+
+const Select: React.FC<Props> = (props) => {
   const { label, isLoading, isError, value, ...rest } = props;
-  const style = isLoading ? loading : isError ? error : null;
+  const style = isLoading ? loading : isError ? error : undefined;
 
   return (
     <p>

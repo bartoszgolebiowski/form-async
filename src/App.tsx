@@ -1,15 +1,8 @@
 import React from "react";
-import SWR from "./components/SWR";
 import Vanilia from "./components/Vanilia";
 
 const App = () => {
-  return (
-    <>
-      <Vanilia />
-      <br />
-      <SWR />
-    </>
-  );
+  return <Vanilia />;
 };
 
 export default App;

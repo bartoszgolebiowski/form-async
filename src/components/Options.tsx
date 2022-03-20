@@ -1,5 +1,5 @@
 import React from "react";
-import { OptionValue } from "../constants";
+import { OptionValue } from "../types";
 
 type Props = {
   values: OptionValue[] | null;

@@ -1,5 +1,5 @@
 import React from "react";
-import { FormValues, SelectValues } from "../constants";
+import { SelectValues, FormValues } from "../types";
 import Options from "./Options";
 import Select from "./Select";
 
@@ -34,10 +34,10 @@ const Form: React.FC<Props> = (props) => {
           name="post"
           label="Post"
           value={values.post ?? undefined}
-          onChange={handleChange}
           disabled={!post.values}
           isLoading={post.isLoading}
           isError={post.isError}
+          onChange={handleChange}
         >
           <Options values={post.values} />
         </Select>
@@ -45,10 +45,10 @@ const Form: React.FC<Props> = (props) => {
           name="comment"
           label="Comment"
           value={values.comment ?? undefined}
-          onChange={handleChange}
           disabled={!comment.values}
           isLoading={comment.isLoading}
           isError={comment.isError}
+          onChange={handleChange}
         >
           <Options values={comment.values} />
         </Select>
